@@ -27,6 +27,8 @@ class OAuth2Helper {
   List<String>? scopes;
   bool enablePKCE;
   bool enableState;
+  String codeVerifier;
+  String codeChallenge;
 
   Function? afterAuthorizationCodeCb;
 
@@ -40,6 +42,8 @@ class OAuth2Helper {
   OAuth2Helper(this.client,
       {this.grantType = authorizationCode,
       required this.clientId,
+      required this.codeVerifier,
+      required this.codeChallenge,
       this.clientSecret,
       this.scopes,
       this.enablePKCE = true,
@@ -103,6 +107,8 @@ class OAuth2Helper {
       tknResp = await client.getTokenWithAuthCodeFlow(
           clientId: clientId,
           clientSecret: clientSecret,
+          codeChallenge: codeChallenge,
+          codeVerifier: codeVerifier,
           scopes: scopes,
           enablePKCE: enablePKCE,
           enableState: enableState,

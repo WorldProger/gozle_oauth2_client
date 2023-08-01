@@ -134,7 +134,8 @@ class OAuth2Client {
       bool enablePKCE = true,
       bool enableState = true,
       String? state,
-      String? codeVerifier,
+      required String codeVerifier,
+      required String codeChallenge,
       Function? afterAuthorizationCodeCb,
       Map<String, dynamic>? authCodeParams,
       Map<String, dynamic>? accessTokenParams,
@@ -143,8 +144,6 @@ class OAuth2Client {
       BaseWebAuth? webAuthClient,
       Map<String, dynamic>? webAuthOpts}) async {
     AccessTokenResponse? tknResp;
-
-    String? codeChallenge;
 
     if (enablePKCE) {
       codeVerifier ??= randomAlphaNumeric(80);
