@@ -11,7 +11,6 @@ class GozleOAuth2Client extends OAuth2Client {
     required String authorizeUrl,
   }) : super(
           authorizeUrl: authorizeUrl,
-          tokenUrl: '',
           redirectUri: redirectUri,
           customUriScheme: customUriScheme,
           scopeSeparator: ',',
