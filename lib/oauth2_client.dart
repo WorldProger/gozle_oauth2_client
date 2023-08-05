@@ -38,7 +38,7 @@ class OAuth2Client {
   });
 
   /// Requests an Access Token to the OAuth2 endpoint using the Authorization Code Flow.
-  Future<String> getAuthCodeFlow({
+  Future<AuthorizationResponse> getAuthCodeFlow({
     required String clientId,
     List<String>? scopes,
     String? clientSecret,
@@ -65,11 +65,7 @@ class OAuth2Client {
           state: state,
           customParams: authCodeParams,
           webAuthOpts: webAuthOpts);
-      if (authResp.code != null) {
-        return authResp.code!;
-      } else {
-        throw 'AUTH CODE IS NULL';
-      }
+      return authResp;
     } catch (exception) {
       rethrow;
     }
