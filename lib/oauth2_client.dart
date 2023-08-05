@@ -145,12 +145,6 @@ class OAuth2Client {
       Map<String, dynamic>? webAuthOpts}) async {
     AccessTokenResponse? tknResp;
 
-    if (enablePKCE) {
-      codeVerifier ??= randomAlphaNumeric(80);
-
-      codeChallenge = OAuth2Utils.generateCodeChallenge(codeVerifier);
-    }
-
     try {
       var authResp = await requestAuthorization(
           webAuthClient: webAuthClient,

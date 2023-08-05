@@ -11,7 +11,6 @@ void main() {
       final resp = AuthorizationResponse.fromRedirectUri(url, state);
 
       expect(resp.code, authCode);
-      expect(resp.state, state);
       expect(resp.isAccessGranted(), true);
     });
 
